@@ -10,9 +10,9 @@ test('get users', async() => {
 
 })
 
-describe('get users successful and unsuccesful', async() => {
+describe('get users successful and unsuccesful', () => {
     test('exists', async() => {
-        const answer = await request(app)
+        const answer = request(app)
                             .get('/users/test@mail.com')
                             .expect(200);
         expect(answer.body).toBeTruthy();
@@ -20,7 +20,7 @@ describe('get users successful and unsuccesful', async() => {
     })
 
     test('does not exists', async() => {
-        const answer = await request(app)
+        const answer = request(app)
                             .get('/users/test@email.com')
                             .expect(400);
         expect(answer.body.error).toBeTruthy();
